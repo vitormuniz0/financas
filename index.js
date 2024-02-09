@@ -37,12 +37,14 @@ let btnSaque = document.getElementById("buttonSaque")
 let financasVitor = new Financas(0)
 
 btnDeposito.addEventListener("click" , (e) => {
-    let valorInput = valordeposito.value
-    financasVitor.depositarRenda(valorInput)
+    let valorInput = valordeposito.value;
+    financasVitor.depositarRenda(valorInput);
+    valordeposito.value = "";
 })
 
 btnSaque.addEventListener("click" , (e) => {
     let valorInput = valorSaque.value
     financasVitor.despesas(valorInput)
+    valorSaque.value = "";
 })
 
