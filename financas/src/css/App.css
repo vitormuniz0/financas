@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-image: url("./img/fundo.jpg");
+  background-image: url("../img/fundo.jpg");
 }
 
 .form{
@@ -48,6 +48,18 @@ input::placeholder {
   color: white;
   background-color: transparent;
   font-size: 110%;
+}
+
+.buttonEnviar:hover{
+  background-color: rgb(5, 105, 105);
+}
+
+.inputSenha:hover{
+  background-color: rgb(5, 105, 105);
+}
+
+.inputUser:hover{
+  background-color: rgb(5, 105, 105);
 }
 
 .linkCadastro{

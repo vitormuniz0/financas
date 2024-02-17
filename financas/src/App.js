@@ -1,5 +1,7 @@
-import './App.css';
+import './css/App.css';
 import React, { useState } from 'react';
+import {BrowserRouter} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function App() {
 
@@ -13,7 +15,7 @@ function App() {
     event.preventDefault()
 
     if(!inputNome){
-      setErroNome('* Por favor, preencha o  campo Usúario *');
+      setErroNome('* Por favor, preencha o  campo Usuário *');
     } else {
       setErroNome('');
     }
@@ -27,27 +29,28 @@ function App() {
   }
 
   return(
-    <form className='form' onSubmit={handleSubmit}>
-      <h1 className='title'>Login</h1>
-      <div>
-        <input type='text' 
-        placeholder='Usúario'
-        className='inputUser' 
-        onChange={(e)=> setInputNome(e.target.value)}/> {''}<br/>
-        {erroNome && <span style={{ color: 'red' }}>{erroNome}</span>}
-      </div>
-      <div>
-        <input type='password' 
-        placeholder='Senha' 
-        className='inputSenha'
-        onChange={(e)=> setInputSenha(e.target.value)} /> {''} <br/>
-        {erroSenha && <span style={{ color: 'red' }}>{erroSenha}</span>}
-      </div>
-      <input type='submit' value = 'Entrar' className='buttonEnviar'/> <br/>
-      <a href='./criarConta.js' className='linkCadastro'>Criar Conta</a>
-    </form>
+    <BrowserRouter>
+      <form className='form' onSubmit={handleSubmit}>
+        <h1 className='title'>Login</h1>
+        <div>
+          <input type='text' 
+          placeholder='Usuário'
+          className='inputUser' 
+          onChange={(e)=> setInputNome(e.target.value)}/> {''}<br/>
+          {erroNome && <span style={{ color: 'red' }}>{erroNome}</span>}
+        </div>
+        <div>
+          <input type='password' 
+          placeholder='Senha' 
+          className='inputSenha'
+          onChange={(e)=> setInputSenha(e.target.value)} /> {''} <br/>
+          {erroSenha && <span style={{ color: 'red' }}>{erroSenha}</span>}
+        </div>
+        <input type='submit' value = 'Entrar' className='buttonEnviar'/> <br/>
+        <Link to="/CriarConta" className='linkCadastro'>Criar Conta</Link>
+      </form>
    
-
+    </BrowserRouter>
   );
 }
 
