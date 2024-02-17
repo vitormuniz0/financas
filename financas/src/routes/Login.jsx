@@ -1,35 +1,35 @@
-import './css/App.css';
+import '../css/App.css';
 import React, { useState } from 'react';
-import {BrowserRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
-function App() {
+const Login = () =>{
+    
+    const [inputNome , setInputNome] = useState('');
+    const [inputSenha , setInputSenha] = useState('');
+    const [erroNome, setErroNome] = useState('');
+    const [erroSenha, setErroSenha] = useState('');
 
-  const [inputNome , setInputNome] = useState('');
-  const [inputSenha , setInputSenha] = useState('');
-  const [erroNome, setErroNome] = useState('');
-  const [erroSenha, setErroSenha] = useState('');
 
 
-  const handleSubmit = (event) =>{
-    event.preventDefault()
+    const handleSubmit = (event) =>{
+        event.preventDefault()
 
-    if(!inputNome){
-      setErroNome('* Por favor, preencha o  campo Usuário *');
-    } else {
-      setErroNome('');
+        if(!inputNome){
+            setErroNome('* Por favor, preencha o  campo Usuário *');
+        } else {
+            setErroNome('');
+        }
+
+        if(!inputSenha){
+            setErroSenha('* Por favor, preencha o campo Senha *');
+        } else {
+            setErroSenha('');
+        }
+
     }
 
-    if(!inputSenha){
-      setErroSenha('* Por favor, preencha o campo Senha *');
-    } else {
-      setErroSenha('');
-    }
-
-  }
-
-  return(
-    <BrowserRouter>
+    return(
+    <>
       <form className='form' onSubmit={handleSubmit}>
         <h1 className='title'>Login</h1>
         <div>
@@ -50,8 +50,8 @@ function App() {
         <Link to="/CriarConta" className='linkCadastro'>Criar Conta</Link>
       </form>
    
-    </BrowserRouter>
+    </>
   );
 }
 
-export default App;
+export default Login;
