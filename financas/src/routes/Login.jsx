@@ -1,6 +1,6 @@
-import '../css/App.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../css/login.module.css'
 
 const Login = () =>{
     
@@ -30,24 +30,24 @@ const Login = () =>{
 
     return(
     <>
-      <form className='form' onSubmit={handleSubmit}>
-        <h1 className='title'>Login</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h1 className={styles.title}>Login</h1>
         <div>
           <input type='text' 
           placeholder='Usuário'
-          className='inputUser' 
+          className={styles.inputUser} 
           onChange={(e)=> setInputNome(e.target.value)}/> {''}<br/>
           {erroNome && <span style={{ color: 'red' }}>{erroNome}</span>}
         </div>
         <div>
           <input type='password' 
           placeholder='Senha' 
-          className='inputSenha'
+          className={styles.inputSenha}
           onChange={(e)=> setInputSenha(e.target.value)} /> {''} <br/>
           {erroSenha && <span style={{ color: 'red' }}>{erroSenha}</span>}
         </div>
-        <input type='submit' value = 'Entrar' className='buttonEnviar'/> <br/>
-        <Link to="/CriarConta" className='linkCadastro'>Criar Conta</Link>
+        <input type='submit' value = 'Entrar' className={styles.buttonEnviar}/> <br/>
+        <Link to="/CriarConta" className={styles.linkCadastro}>Criar Conta</Link>
       </form>
    
     </>

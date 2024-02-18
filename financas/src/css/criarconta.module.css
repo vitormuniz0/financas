@@ -1,0 +1,99 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+  
+.form{
+    text-align: center;
+    display: block;
+    margin-top: 7%;
+}
+  
+.title{
+    font-size: 280%;
+    color: white;
+}
+  
+.inputUser{
+    font-size: 110%;
+    text-align: center;
+    width: 30%;
+    height: 37px;
+    border: 3px solid white;
+    color: white;
+    background-color: transparent;
+}
+
+.inputName{
+    font-size: 110%;
+    margin-bottom: 2%;
+    text-align: center;
+    width: 30%;
+    height: 37px;
+    border: 3px solid white;
+    color: white;
+    background-color: transparent;
+}
+
+input::placeholder {
+    color: white;
+}
+  
+.inputSenha{
+    margin-top: 2%;
+    width: 30%;
+    height:35px;
+    font-size: 110%;
+    text-align: center;
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+}
+
+.inputConfirmSenha{
+    margin-top: 2%;
+    width: 30%;
+    height:35px;
+    font-size: 100%;
+    text-align: center;
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+}
+  
+.buttonEnviar{
+    width: 15%;
+    margin-top: 2%;
+    height: 45px;
+    margin-bottom: 2%;
+    border: 3px solid white;
+    color: white;
+    background-color: transparent;
+    font-size: 110%;
+}
+  
+.buttonEnviar:hover{
+    background-color: rgb(5, 105, 105);
+}
+  
+.inputSenha:hover{
+    background-color: rgb(5, 105, 105);
+}
+  
+.inputUser:hover{
+    background-color: rgb(5, 105, 105);
+}
+
+.inputConfirmSenha:hover{
+    background-color: rgb(5, 105, 105);
+}
+
+.inputName:hover{
+    background-color: rgb(5, 105, 105);
+}
+
+  
+.linkCadastro{
+    color: white;
+}

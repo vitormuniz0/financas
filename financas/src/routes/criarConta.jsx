@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import "../css/criarconta.css"
+import styles from '../css/criarconta.module.css'
 
 const CriarConta = () =>{
     
@@ -30,24 +30,38 @@ const CriarConta = () =>{
 
     return(
     <>
-      <form className='form' onSubmit={handleSubmit}>
-        <h1 className='title'>Criar Conta</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h1 className={styles.title}>Criar Conta</h1>
+        <div>
+          <input type='text' 
+          placeholder='Nome'
+          className={styles.inputName}
+          onChange={(e)=> setInputNome(e.target.value)}/> {''}<br/>
+          {erroNome && <span style={{ color: 'red' }}>{erroNome}</span>}
+        </div>
         <div>
           <input type='text' 
           placeholder='Usuário'
-          className='inputUser' 
+          className={styles.inputUser}
           onChange={(e)=> setInputNome(e.target.value)}/> {''}<br/>
           {erroNome && <span style={{ color: 'red' }}>{erroNome}</span>}
         </div>
         <div>
           <input type='password' 
           placeholder='Senha' 
-          className='inputSenha'
+          className={styles.inputSenha}
           onChange={(e)=> setInputSenha(e.target.value)} /> {''} <br/>
           {erroSenha && <span style={{ color: 'red' }}>{erroSenha}</span>}
         </div>
-        <input type='submit' value = 'Entrar' className='buttonEnviar'/> <br/>
-        <Link to="/CriarConta" className='linkCadastro'>Criar Conta</Link>
+        <div>
+          <input type='password' 
+          placeholder='Confirmar Senha' 
+          className={styles.inputConfirmSenha}
+          onChange={(e)=> setInputSenha(e.target.value)} /> {''} <br/>
+          {erroSenha && <span style={{ color: 'red' }}>{erroSenha}</span>}
+        </div>
+        <input type='submit' value = 'Criar' className={styles.buttonEnviar}/> <br/>
+        <Link to="/" className={styles.linkCadastro}>Entrar</Link>
       </form>
    
     </>
