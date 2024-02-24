@@ -1,9 +1,12 @@
-import "../css/error.css"
+import styles from '../css/error.module.css'
 
 
 const Error = () =>{
     return(
-        <h1>Error 404</h1>
+        <div className={styles.body}>
+           <h1 className={styles.title}>Error 404</h1> 
+        </div>
+        
     )
 }
 

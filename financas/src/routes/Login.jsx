@@ -1,55 +1,58 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../css/login.module.css'
+import {formik , Form , Field, ErrorMessage, Formik} from "formik";
+import * as yup from "yup";
 
 const Login = () =>{
     
-    const [inputNome , setInputNome] = useState('');
-    const [inputSenha , setInputSenha] = useState('');
-    const [erroNome, setErroNome] = useState('');
-    const [erroSenha, setErroSenha] = useState('');
+    const validationLogin = yup.object().shape({
+      usuario: yup.string().required("Este campo é obrigatorio"),
+      senha: yup.string().min(8, "A senha deve conter no minino 8 caracteres").required("Este campo é obrigatorio"),
+    })
 
 
-
-    const handleSubmit = (event) =>{
-        event.preventDefault()
-
-        if(!inputNome){
-            setErroNome('* Por favor, preencha o  campo Usuário *');
-        } else {
-            setErroNome('');
-        }
-
-        if(!inputSenha){
-            setErroSenha('* Por favor, preencha o campo Senha *');
-        } else {
-            setErroSenha('');
-        }
-
+    const handleClickLogin = (values) =>{
+        console.log(values)
     }
 
     return(
     <>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h1 className={styles.title}>Login</h1>
-        <div>
-          <input type='text' 
-          placeholder='Usuário'
-          className={styles.inputUser} 
-          onChange={(e)=> setInputNome(e.target.value)}/> {''}<br/>
-          {erroNome && <span style={{ color: 'red' }}>{erroNome}</span>}
-        </div>
-        <div>
-          <input type='password' 
-          placeholder='Senha' 
-          className={styles.inputSenha}
-          onChange={(e)=> setInputSenha(e.target.value)} /> {''} <br/>
-          {erroSenha && <span style={{ color: 'red' }}>{erroSenha}</span>}
-        </div>
-        <input type='submit' value = 'Entrar' className={styles.buttonEnviar}/> <br/>
-        <Link to="/CriarConta" className={styles.linkCadastro}>Criar Conta</Link>
-      </form>
-   
+      <div className={styles.body}>
+        <Formik  initialValues={{}} onSubmit={handleClickLogin} validationSchema={validationLogin}>
+          <Form  className={styles.form}>
+            <h1 className={styles.title}>Login</h1>
+            
+            <div>
+              <Field type='text' 
+              name="usuario"
+              placeholder='Usuário'
+              className={styles.inputUser} /><br/>
+              <ErrorMessage 
+              component='Span'
+              name='usuario'
+              className='form-error'
+              />
+            </div>
+
+            <div>
+              <Field type='password' 
+              name='senha'
+              placeholder='Senha' 
+              className={styles.inputSenha}/><br/>
+              <ErrorMessage 
+              component='Span'
+              name='senha'
+              className='form-error'
+              />
+            </div>
+
+            <input type='submit' value = 'Entrar' className={styles.buttonEnviar}/> <br/>
+            <Link to="/CriarConta" className={styles.linkCadastro}>Criar Conta</Link>
+
+          </Form>
+        </Formik>
+      </div>
     </>
   );
 }

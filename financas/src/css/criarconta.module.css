@@ -1,13 +1,21 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: white;
-  }
+}
+
+.body {
+    height: 100vh;
+    background-image: url("../img/fundo.jpg");
+    margin: 0;
+    display: flex;
+}
   
 .form{
+    align-items: center;
+    margin-top: 8%;
     text-align: center;
-    display: block;
-    margin-top: 7%;
+    width: 40%;
+    margin-left: 30%;
 }
   
 .title{
@@ -18,18 +26,19 @@ body{
 .inputUser{
     font-size: 110%;
     text-align: center;
-    width: 30%;
+    width: 70%;
     height: 37px;
     border: 3px solid white;
     color: white;
     background-color: transparent;
+    margin-top: 4%;
 }
+
 
 .inputName{
     font-size: 110%;
-    margin-bottom: 2%;
     text-align: center;
-    width: 30%;
+    width: 70%;
     height: 37px;
     border: 3px solid white;
     color: white;
@@ -41,8 +50,8 @@ input::placeholder {
 }
   
 .inputSenha{
-    margin-top: 2%;
-    width: 30%;
+    margin-top: 4%;
+    width: 70%;
     height:35px;
     font-size: 110%;
     text-align: center;
@@ -52,10 +61,10 @@ input::placeholder {
 }
 
 .inputConfirmSenha{
-    margin-top: 2%;
-    width: 30%;
+    margin-top: 4%;
+    width: 70%;
     height:35px;
-    font-size: 100%;
+    font-size: 90%;
     text-align: center;
     background-color: transparent;
     border: 3px solid white;
@@ -63,9 +72,9 @@ input::placeholder {
 }
   
 .buttonEnviar{
-    width: 15%;
-    margin-top: 2%;
-    height: 45px;
+    width: 45%;
+    margin-top: 4%;
+    height: 35px;
     margin-bottom: 2%;
     border: 3px solid white;
     color: white;
