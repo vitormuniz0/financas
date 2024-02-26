@@ -31,7 +31,7 @@ const Login = () =>{
               <ErrorMessage 
               component='Span'
               name='usuario'
-              className='form-error'
+              className={styles.error}
               />
             </div>
 
@@ -43,7 +43,7 @@ const Login = () =>{
               <ErrorMessage 
               component='Span'
               name='senha'
-              className='form-error'
+              className={styles.error}
               />
             </div>
 
