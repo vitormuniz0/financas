@@ -7,8 +7,13 @@ import * as yup from "yup";
 const Login = () =>{
     
     const validationLogin = yup.object().shape({
-      usuario: yup.string().required("Este campo é obrigatorio"),
-      senha: yup.string().min(8, "A senha deve conter no minino 8 caracteres").required("Este campo é obrigatorio"),
+      usuario: yup
+        .string()
+        .required("Este campo é obrigatorio"),
+      senha: yup
+        .string()
+        .min(8, "A senha deve conter no minino 8 caracteres")
+        .required("Este campo é obrigatorio"),
     })
 
 

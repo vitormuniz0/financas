@@ -6,16 +6,25 @@ import * as yup from "yup";
 
 const CriarConta = () =>{
     
-  const validationLogin = yup.object().shape({
+  const validationCriarConta = yup.object().shape({
 
-    nome: yup.string().required("Este campo é obrigatorio"),
-    usuario: yup.string().required("Este campo é obrigatorio"),
-    senha: yup.string().min(8, "A senha deve conter no minino 8 caracteres").required("Este campo é obrigatorio"),
-    confirmSenha : yup.string().min(8).required("Este campo é obrigatorio")
+    nome: yup
+      .string()
+      .required("Este campo é obrigatorio!"),
+    usuario: yup
+      .string()
+      .required("Este campo é obrigatorio!"),
+    senha: yup
+      .string()
+      .min(8, "A senha deve conter no minino 8 caracteres!")
+      .required("Este campo é obrigatorio!"),
+    confirmSenha : yup
+      .string()
+      .oneOf([yup.ref("senha"), null], "As senhas não são iguais!")
   })
 
 
-  const handleClickLogin = (values) =>{
+  const handleClickCriarConta = (values) =>{
     console.log(values)
   }
     
@@ -23,7 +32,7 @@ const CriarConta = () =>{
     return(
     <>
       <div className={styles.body}>
-      <Formik  initialValues={{}} onSubmit={handleClickLogin} validationSchema={validationLogin}>
+      <Formik  initialValues={{}} onSubmit={handleClickCriarConta} validationSchema={validationCriarConta}>
           <Form className={styles.form}>
             <h1 className={styles.title}>Criar Conta</h1>
 
