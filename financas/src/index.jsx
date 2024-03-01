@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import Login from './routes/Login';
 import CriarConta from './routes/criarConta';
 import  Error  from './routes/Error.jsx';
+import { createRoot } from "react-dom/client";
 
 const App = () =>{
   return(
@@ -21,7 +21,7 @@ const App = () =>{
 
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App/>

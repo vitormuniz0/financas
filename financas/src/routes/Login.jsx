@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../css/login.module.css'
-import {formik , Form , Field, ErrorMessage, Formik} from "formik";
+import { Form , Field, ErrorMessage, Formik} from "formik";
 import * as yup from "yup";
+import Axios from "axios";
 
 const Login = () =>{
     
@@ -18,7 +19,12 @@ const Login = () =>{
 
 
     const handleClickLogin = (values) =>{
-        console.log(values)
+      Axios.post("http://localhost:3002/login" , {
+        usuario: values.usuario ,
+        senha: values.senha,
+      },{rejectUnauthorized: false}).then((response) =>{
+        console.log(response)
+      })
     }
 
     return(
