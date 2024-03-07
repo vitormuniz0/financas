@@ -33,36 +33,36 @@ app.post("/cadastro", (req,res) =>{
     db.query("SELECT * FROM `usuarios` WHERE `usuario` = ?" , [usuario], 
     (err,response) => {
         if(err){
-            res.send(err);
+            response.send(err);
         }
         res.send(response)
-        if(result.length == 0){
+        if(response.length == 0){
             db.query("INSERT INTO `usuarios` (`nome`, `usuario`, `senha`) VALUES (? , ?, ?)", [nome , usuario, senha], (err,res) =>{
                 if(err){
-                    res.send(err)
+                    res.status(500).send(err)
                 }
                 else{
-                    res.send({msg: "Cadastrado com sucesso"})
+                    res.status(200).send({ msg: "Cadastrado com sucesso" });
                 } 
             })
         } else {
-            console.log("Usuário cadastrado")
+            res.status(400).send({ msg: "Usuário já cadastrado" });
         }
     })
 })
 
 app.post("/login" , (req,res) =>{
     const usuario = req.body.usuario;
-    const senha = req.body.usuario;
+    const senha = req.body.senha;
 
     db.query("SELECT * FROM  `usuarios` WHERE `usuario` = ? AND `senha` = ? " , [usuario,senha], (err , result) =>{
         if(err) {
-            res.send(err)
+            res.status(500).send(err)
         }
         if(result.length > 0){
-            res.send("usuario logado")
+            res.status(200).send({ msg: "Usúario Logado" });
         } else {
-            res.send("Usuario não encontrado")
+            res.status(200).send({ msg: "Usúario Não encontrado" });
         }
     })
 })
