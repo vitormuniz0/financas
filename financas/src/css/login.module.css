@@ -5,7 +5,7 @@ body{
 
 .body{
   height: 100vh;
-  background-image: url("../img/fundo.jpg");
+
   margin: 0;
   display: flex;
 }

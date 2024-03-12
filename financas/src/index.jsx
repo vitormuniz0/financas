@@ -4,12 +4,13 @@ import Login from './routes/Login';
 import CriarConta from './routes/criarConta';
 import  Error  from './routes/Error.jsx';
 import { createRoot } from "react-dom/client";
+import App from './App.jsx';
 
-const App = () =>{
+const Principal = () =>{
   return(
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login/>}/>
+        <Route path='/' element={<App/>}/>
         <Route path='/CriarConta' element={<CriarConta/>}/>
         <Route path='*' element={<Error/>}/>
       </Routes>
