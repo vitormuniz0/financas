@@ -1,8 +1,14 @@
 import { compare} from "bcryptjs";
-import { prisma } from "../utils/prisma";
 import { Request, Response } from "express";
-import { sign } from "jsonwebtoken";
+import { Secret, sign } from "jsonwebtoken";
+import Users from "../models";
 
+
+interface User{
+    id: number,
+    email: string,
+    password: string
+}
 
 export class AuthController {
 
@@ -10,7 +16,7 @@ export class AuthController {
         const {email, password} = req.body;
         
         
-        const user = await prisma.user.findFirst({ where: { email}});       //buscando se usuário existe
+        const user = await Users.findOne({ where: { email } }) as unknown as User | null;      //buscando se usuário existe
 
         if(!user){
             return res.json({error: "User not found"}) 
@@ -22,7 +28,9 @@ export class AuthController {
             return res.json({error: "Password Invalid"})     
         }
 
-        const token = sign({id: user.id}, "secret", {expiresIn: "1d"})       //fazendo o token da aplicação
+        const secret = process.env.SECRET as Secret;
+
+        const token = sign({id: user.id}, secret , {expiresIn: "1d"})       //fazendo o token da aplicação
 
         const {id} = user;   
 

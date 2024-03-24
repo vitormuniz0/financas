@@ -55,7 +55,6 @@
     position: relative;
     border-bottom: 2px solid #adadad;
     margin-bottom: 37px;
-
 }
 
 .input{
@@ -195,4 +194,13 @@
     color: #6a7dfe ;
     line-height: 1.5;
     text-decoration: none;
+}
+
+.errorMessage{
+    display: block;
+    align-items: center;
+    text-align: center;
+    color: rgb(200, 75, 75);
+    font-size: 11px;
+
 }

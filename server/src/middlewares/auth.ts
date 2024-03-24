@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { verify } from "jsonwebtoken";
+import { Secret, verify } from "jsonwebtoken";
 
 type TokenPayload = {
     id: string;
@@ -22,7 +22,8 @@ export function AuthMiddlewares(
     const [, token] = authorization.split(" ")                //separando o token
 
     try{
-        const decoded = verify(token, "secret");               
+        const secret = process.env.SECRET as Secret;
+        const decoded = verify(token, secret);               
         const {id} = decoded as TokenPayload;
 
         req.userId = id;
