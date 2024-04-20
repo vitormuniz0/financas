@@ -4,13 +4,8 @@
     box-sizing: border-box;
 }
 
-.container {
-    width: 100%;
-    margin:  0 auto;
-}
 
 .container-login {
-    width: 100%;
     min-height: 100vh;
 
     display: flex;

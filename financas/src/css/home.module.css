@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    background-color: black;
+    min-height: 100vh;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+}
+
+.entradas {
+    color: #00FF29;
+    margin-left: 7px;
+}
+
+.saidas {
+    color: #FF0000;
+    margin-left: 7px;
+}
+
+.total {
+    color: white;
+    margin-left: 7px;
+}
+
+.valor {
+    text-align: center;
+    font-size: 30px;
+    height: 24px;
+    width: 280px;
+}

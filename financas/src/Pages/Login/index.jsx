@@ -2,27 +2,22 @@ import React, { useContext, useState } from "react"
 import jpIMG from '../../assets/jp.svg'
 import "../../css/global.css"
 import { Link, Navigate } from "react-router-dom"
-import { LayoutComponents } from "../../Components/layoutcomponents/LayoutComponents"
+import { LayoutComponents } from "../../Components/Layoutcomponents/index"
 
 import { AuthContext } from "../../context/auth"
 
 export const Login = () => {
-
-
-
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const { signIn, signed } = useContext(AuthContext)
+    const { signIn, signed, loading } = useContext(AuthContext)
 
     const handleSignIn = async (e) => {
         e.preventDefault()
-        const data = {
-            email, password,
-        }
+        const data = {  email, password}
         await signIn(data)
     }
 
-    if (signed) {
+    if (signed && !loading) {
         return <Navigate to="/home" />
     } else {
         return (

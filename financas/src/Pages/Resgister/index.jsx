@@ -1,4 +1,4 @@
-import { LayoutComponents } from "../../Components/layoutcomponents/LayoutComponents"
+import { LayoutComponents } from "../../Components/Layoutcomponents/index"
 import React, { useState } from "react"
 import jpIMG from '../../assets/jp.svg'
 import { Link } from "react-router-dom"
@@ -14,7 +14,6 @@ export const Register = () => {
     const [error, setError] = useState(null);
 
     const hadleSaveUser = async (e) => {
-        e.preventDefault()
         const data = {
             email, password, name
         }

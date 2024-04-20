@@ -1,0 +1,19 @@
+.input {
+  background-color: transparent;
+  animation: none;
+  height: 24px;
+  width: 280px;
+  font-size: 30px;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 9px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

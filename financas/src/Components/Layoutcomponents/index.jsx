@@ -1,13 +1,14 @@
 import './styles.css'
+import Container from 'react-bootstrap/Container';
 
 export const LayoutComponents = (props) =>{
     return (
-        <div className="container">
+        <Container fluid className='container-login'>
             <div className="container-login">
                 <div className="wrap-login">
                     {props.children}
                 </div>
-            </div> 
-        </div>
+            </div>
+        </Container>
     )
 }

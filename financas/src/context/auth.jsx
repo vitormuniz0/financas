@@ -7,15 +7,39 @@ export const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const loadingStorageData = async () => {
+            setLoading(true)
             const storageUser = localStorage.getItem("@Auth:user")
             const storageToken = localStorage.getItem("@Auth:token")
 
             if (storageUser && storageToken) {
-                setUser(storageUser)
+                try {
+                    const response = await api.get("/user", {
+                      headers: {
+                        Authorization: `Bearer ${storageToken}`,
+                      },
+                    });
+          
+                    if (response.status === 200) {
+                      setUser(response.data);
+                    } else {
+                      setUser(null);
+                      localStorage.removeItem("@Auth:token");
+                      localStorage.removeItem("@Auth:user");
+                    }
+                  } catch (error) {
+                    console.error("Error loading user data:", error);
+                    setUser(null);
+                    localStorage.removeItem("@Auth:token");
+                    localStorage.removeItem("@Auth:user");
+                  }
+            } else{
+                setUser(false)
             }
+            setLoading(false)
         };
         loadingStorageData()
     }, [])
@@ -47,6 +71,7 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
             user,
             signed: !!user,
+            loading,
             signIn,
         }}>
             {children}

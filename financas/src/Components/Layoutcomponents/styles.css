@@ -1,6 +1,11 @@
 .container {
     width: 100%;
     margin:  0 auto;
+    background-color: black;
+}
+
+.fluid{
+    background-color: #111;
 }
 
 .container-login {
