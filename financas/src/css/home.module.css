@@ -4,31 +4,55 @@
     box-sizing: border-box;
 }
 
-.container {
+.containerGeral {
     width: 100%;
     background-color: black;
     min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 1080px;
+    min-height: 100vh;
+    margin: auto;
+    background-color: #333;
 }
 
 .title {
     text-align: center;
-    color: white;
+    font-size: 50px;
+    color: black;
     margin-top: 50px;
+    font-family: "Teko", sans-serif;
+    font-weight: 600;
+    font-style: normal;
 }
 
 .entradas {
     color: #00FF29;
     margin-left: 7px;
+    font-family: "Teko", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .saidas {
     color: #FF0000;
     margin-left: 7px;
+    font-family: "Teko", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .total {
     color: white;
     margin-left: 7px;
+    font-family: "Teko", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .valor {
@@ -36,4 +60,5 @@
     font-size: 30px;
     height: 24px;
     width: 280px;
+    margin-bottom: 5px;
 }

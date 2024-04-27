@@ -1,0 +1,17 @@
+.button {
+    display: flex;
+    width: 80px;
+    height: 70px;
+    padding: 10px;
+    float: right;
+    margin-right: 100px;
+    color: black;
+    transition: padding 1s ease;
+
+}
+
+.button:hover {
+    color: rgb(40, 40, 40);
+    padding: 1px;
+    cursor: pointer;
+}
