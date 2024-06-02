@@ -26,7 +26,7 @@ export class AuthController {
             const user = await Users.findOne({ where: { email } }) as unknown as User | null;      //buscando se usuário existe
 
             if (!user) {
-                return res.json({ error: "User not found" })
+                return res.json({ error: "Usuário não existe!" })
             }
 
             const isValuePassword = await compare(password, user.password);     //comparando senha enviada com a senha criptografada pra ver se é igual

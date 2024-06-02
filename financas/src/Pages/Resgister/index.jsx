@@ -32,7 +32,6 @@ export const Register = () => {
             } else {
                 setError("Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.");
             }
-
         }
 
     }

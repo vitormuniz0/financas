@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import { Caixas } from '../../Components/home/caixas';
 import { Valor } from '../../Components/home/valor';
 import { Button } from '../../Components/home/button';
+import { Tabela } from '../../Components/home/table';
+
 
 
 export const Home = () => {
@@ -18,7 +20,7 @@ export const Home = () => {
                 </Row>
                 <Row>
                     <Col>
-                        <Button/>
+                        <Button />
                     </Col>
                 </Row>
                 <Row>
@@ -48,7 +50,9 @@ export const Home = () => {
                     </Col>
                 </Row>
                 <Row>
-
+                    <Col>
+                        <Tabela/>
+                    </Col>
                 </Row>
             </div>
         </Container>
