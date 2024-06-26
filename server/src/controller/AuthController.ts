@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 import { Request, Response } from "express";
 import { Secret, sign } from "jsonwebtoken";
-import Users from "../models";
+import Users from "../models/userModel";
 
 
 interface User {

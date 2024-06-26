@@ -1,6 +1,6 @@
 import { hash } from "bcryptjs";
 import { Request, Response } from "express";
-import Users from "../models";
+import Users from "../models/userModel";
 
 export class UserController {
 
@@ -13,8 +13,6 @@ export class UserController {
             console.log(error)
             return res.status(500).json({ error: "Internal Server Error" })
         }
-
-
     }
 
     async store(req: Request, res: Response) {
@@ -48,7 +46,5 @@ export class UserController {
 
             return res.status(500).json({ error: "Erro interno do servidor" })
         }
-
-
     }
 }
