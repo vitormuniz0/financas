@@ -1,13 +1,18 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../connection';
 
-const Gastos = sequelize.define('post_criado', {
+const Gastos = sequelize.define('Gastos', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     id_user: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: 'usuarios', // Nome da tabela de referencia
-            key: 'id'  // nome da coluna
+            key: 'id'  // Nome da coluna
         }
     },
     descricao: {
@@ -38,8 +43,6 @@ const Gastos = sequelize.define('post_criado', {
     }
 }, {
     tableName: "gastos"
-}
-);
-
+});
 
 export default Gastos;

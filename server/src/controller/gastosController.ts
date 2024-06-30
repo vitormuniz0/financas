@@ -6,19 +6,19 @@ export class GastosController {
     async CriarGasto(req: Request, res: Response) {
         try {
 
-            const { descricao, valor, categoria, tipo } = req.body;
+            const {descricao, valor, categoria, tipo, id_user} = req.body;
 
-            if (!descricao || !valor || !categoria || !tipo) {
+            if (!descricao || !valor || !categoria || !tipo || !id_user) {
                 return res.status(400).json({ error: "Faltando informações!" })
             }
 
             const gasto = await Gastos.create({
+                id_user,
                 descricao,
                 valor,
                 categoria,
                 tipo
             })
-
             return res.status(201).json({ gasto })
 
         } catch (error) {
