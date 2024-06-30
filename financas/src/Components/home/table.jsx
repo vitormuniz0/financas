@@ -1,19 +1,22 @@
 import Table from 'react-bootstrap/Table';
 import styles from './table.module.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { api } from '../../services/api';
 import Button from 'react-bootstrap/Button';
+import { AuthContext } from '../../context/auth'
 
 
 export const Tabela = () =>{
 
     const [dados, setDados] = useState([])
 
+    const { userId } = useContext(AuthContext);
+
     useEffect(()=>{
 
         const fetchData = async () => {
             try {
-                const response = await api.get('');
+                const response = await api.get(`http://localhost:3334/buscarGasto/${userId}`);
                 setDados(response.data);
             } catch (error) {
                 console.error('Erro ao buscar os dados:', error)
@@ -22,7 +25,7 @@ export const Tabela = () =>{
 
         fetchData();
 
-    }, [])
+    }, [userId])
 
 
     return (
@@ -42,7 +45,7 @@ export const Tabela = () =>{
                         <td>{item.descricao}</td>
                         <td>{item.valor}</td>
                         <td>{item.categoria}</td>
-                        <td>{item.dataHora}</td>
+                        <td>{item.createdAt}</td>
                         <td>
                             <Button variant='success'>Editar</Button>
                             <Button variant='danger'>Excluir</Button>

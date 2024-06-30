@@ -14,5 +14,5 @@ router.post("/create",  userController.store)        //rota de criar user
 router.get("/users",AuthMiddlewares, userController.index)       //rota de buscar todos os users
 router.post("/auth",  authController.authenticate)         //autenticate / entrar no perfil
 router.post("/criarGasto" , gastosController.CriarGasto)
-router.get("/buscarGasto" , gastosController.BuscarGasto)
+router.get("/buscarGasto/:id_user" , gastosController.BuscarGasto)
 

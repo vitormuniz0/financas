@@ -4,6 +4,8 @@ import styles from './popUp.module.css';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import ButtonEntrada from './buttonEntrada';
+import axios from 'axios';
+
 
 export const PopUp = ({ show, handleClose, children }) => {
 

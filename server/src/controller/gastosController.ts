@@ -47,7 +47,7 @@ export class GastosController {
                 return res.status(404).json("Nenhum gasto existente")
             } else {
                 console.log("Gasto exibido!")
-                return res.status(201).json(gastos)
+                return res.status(200).json(gastos)
             }
         } catch (error) {
             console.error("Erro ao buscar Gastos:", error);

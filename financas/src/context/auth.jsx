@@ -67,12 +67,17 @@ export const AuthProvider = ({ children }) => {
             setError("Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.", error);
         }
     }
+
+    const userId = user?.id;
+
+
     return (
         <AuthContext.Provider value={{
             user,
             signed: !!user,
             loading,
             signIn,
+            userId
         }}>
             {children}
         </AuthContext.Provider>
