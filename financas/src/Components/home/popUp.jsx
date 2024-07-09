@@ -2,12 +2,14 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import styles from './popUp.module.css';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useState , useContext } from 'react';
 import ButtonEntrada from './buttonEntrada';
-import axios from 'axios';
+import { api } from '../../services/api';
+import { AuthContext } from '../../context/auth'
+import {updateTable} from './table'
 
 
-export const PopUp = ({ show, handleClose, children }) => {
+export const PopUp = ({ show, handleClose, updateTable}) => {
 
     const [descricao, setDescricao] = useState('');
     const [valor, setValor] = useState('');
@@ -18,16 +20,30 @@ export const PopUp = ({ show, handleClose, children }) => {
         setTipo(newRadioValue);
     };
 
-    const handleSave = () => {
-        // Aqui você pode manipular os dados e enviar para onde for necessário
-        const data = {
+    const { userId } = useContext(AuthContext);
+
+    const handleSave = async () => {
+
+        try{
+           const data = {
             descricao,
             valor,
             categoria,
             tipo,
+            id_user: userId,
         };
-        alert('Informações Salvas')
-        console.log(data); 
+
+        const response = await api.post("/criarGasto" , data)
+
+        alert('Informações Salvas!')
+
+        updateTable();
+
+        console.log("Dados enviados com sucesso! ", data);  
+        } catch (error){
+            console.error("Erro ao tentar salvar Gasto!" , error)
+        }
+        
     };
 
     return (
