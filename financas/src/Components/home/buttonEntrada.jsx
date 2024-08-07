@@ -8,8 +8,8 @@ function ButtonEntrada({ onRadioChange }) {
   const [radioValue, setRadioValue] = useState('entrada');
 
   const radios = [
-    { name: 'Entrada', value: 'entrada' },
-    { name: 'Saida', value: 'saida' },
+    { name: 'Entrada', value: 'Entrada' },
+    { name: 'Saida', value: 'Saida' },
   ];
 
   const handleRadioChange = (e) => {

@@ -6,7 +6,6 @@ import { useState , useContext } from 'react';
 import ButtonEntrada from './buttonEntrada';
 import { api } from '../../services/api';
 import { AuthContext } from '../../context/auth'
-import {updateTable} from './table'
 
 
 export const PopUp = ({ show, handleClose, updateTable}) => {

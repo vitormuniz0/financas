@@ -18,7 +18,7 @@ export const Button = () => {
     return (
         <>
             <BsCashCoin className={styles.button} onClick={handleOpenModal} />
-            <PopUp show={showMyComponent} handleClose={handleCloseModal}/>
+            <PopUp show={showMyComponent} handleClose={handleCloseModal} updateTable={() => {}}/>
         </>
     )
 }

@@ -26,10 +26,17 @@ export const Tabela = () => {
         fetchData();
 
     }, [fetchData]);
-
+    
     const updateTable = async () => {
-        fetchData();
-    }
+        try {
+            const response = await api.get(`http://localhost:3334/buscarGasto/${userId}`);
+            setDados(response.data); // Atualizar os dados da tabela com os dados mais recentes
+        } catch (error) {
+            console.error('Erro ao buscar os dados:', error);
+        }
+    };
+
+
 
 
     return (
@@ -46,13 +53,13 @@ export const Tabela = () => {
             <tbody>
                 {dados.map((item, index) => (
                     <tr key={index}>
-                        <td>{item.descricao}</td>
-                        <td>{item.valor}</td>
-                        <td>{item.categoria}</td>
-                        <td>{item.createdAt}</td>
+                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.descricao}</td>
+                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.valor}</td>
+                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.categoria}</td>
+                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.createdAt}</td>
                         <td>
-                            <Button variant='success'>Editar</Button>
-                            <Button variant='danger'>Excluir</Button>
+                            <Button variant='success' className={styles.editar}>Editar</Button>
+                            <Button variant='danger' className={styles.excluir}>Excluir</Button>
                         </td>
                     </tr>
                 ))}

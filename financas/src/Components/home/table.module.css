@@ -4,3 +4,15 @@
     margin: auto;
     margin-top: 25px;
 }
+
+.entrada{
+    color: green;
+}
+
+.saida{
+    color: red;
+}
+
+.editar{
+    margin-right: 5px;
+}
