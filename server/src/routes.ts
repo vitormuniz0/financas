@@ -15,4 +15,6 @@ router.get("/users",AuthMiddlewares, userController.index)       //rota de busca
 router.post("/auth",  authController.authenticate)         //autenticate / entrar no perfil
 router.post("/criarGasto" , gastosController.CriarGasto)
 router.get("/buscarGasto/:id_user" , gastosController.BuscarGasto)
+router.put("/atualizarGasto/id" , gastosController.AtualizarGasto)
+router.delete("deletarGasto", gastosController.DeletarGasto)
 

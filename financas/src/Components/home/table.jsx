@@ -58,7 +58,7 @@ export const Tabela = () => {
                         <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.categoria}</td>
                         <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.createdAt}</td>
                         <td>
-                            <Button variant='success' className={styles.editar}>Editar</Button>
+                            <Button variant='success' className={styles.editar} onClick={updateTable}>Editar</Button>
                             <Button variant='danger' className={styles.excluir}>Excluir</Button>
                         </td>
                     </tr>
