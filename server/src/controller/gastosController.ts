@@ -112,7 +112,7 @@ export class GastosController {
 
         const gastoAtualizado = await Gastos.findByPk(id);
 
-        return res.status(200).json({ gasto: gastoAtualizado });
+        return res.status(200).json({ message: gastoAtualizado });
         
     }
 

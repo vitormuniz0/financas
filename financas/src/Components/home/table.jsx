@@ -4,13 +4,25 @@ import { useEffect, useState, useContext, useCallback } from 'react';
 import { api } from '../../services/api';
 import Button from 'react-bootstrap/Button';
 import { AuthContext } from '../../context/auth'
+import { PopUp } from './popUp';
 
 
 export const Tabela = () => {
 
     const [dados, setDados] = useState([])
-
     const { userId } = useContext(AuthContext);
+    const [showMyComponent, setShowMyComponent] = useState(false)
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const handleOpenModal = (item) => {
+        setSelectedItem(item)
+        setShowMyComponent(true)
+    }
+
+    const handleCloseModal = () => {
+        setShowMyComponent(false)
+        setSelectedItem(null)
+    }
 
     const fetchData = useCallback(async () => {
         try {
@@ -26,45 +38,72 @@ export const Tabela = () => {
         fetchData();
 
     }, [fetchData]);
-    
+
     const updateTable = async () => {
         try {
             const response = await api.get(`http://localhost:3334/buscarGasto/${userId}`);
-            setDados(response.data); // Atualizar os dados da tabela com os dados mais recentes
+            setDados(response.data);
         } catch (error) {
             console.error('Erro ao buscar os dados:', error);
         }
     };
 
-
-
+    const deleteColumn = async (item) => {
+        try {
+            await api.delete(`/deletarGasto/${item.id}`);
+            updateTable();
+        } catch (error) {
+            console.error("Erro ao tentar deletar gasto!", error);
+        }
+    };
 
     return (
-        <Table striped bordered hover variant='dark' responsive="lg" className={styles.table}>
-            <thead>
-                <tr>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                    <th>Categoria</th>
-                    <th>Data/hora</th>
-                    <th>Gerenciar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {dados.map((item, index) => (
-                    <tr key={index}>
-                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.descricao}</td>
-                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.valor}</td>
-                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.categoria}</td>
-                        <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.createdAt}</td>
-                        <td>
-                            <Button variant='success' className={styles.editar} onClick={updateTable}>Editar</Button>
-                            <Button variant='danger' className={styles.excluir}>Excluir</Button>
-                        </td>
+        <>
+            <Table striped bordered hover variant='dark' responsive="lg" className={styles.table}>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Categoria</th>
+                        <th>Data/hora</th>
+                        <th>Gerenciar</th>
                     </tr>
-                ))}
-            </tbody>
-        </Table>
+                </thead>
+                <tbody>
+                    {dados.map((item, index) => (
+                        <tr key={index}>
+                            <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.descricao}</td>
+                            <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.valor}</td>
+                            <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.categoria}</td>
+                            <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.createdAt}</td>
+                            <td>
+                                <Button
+                                    variant='success'
+                                    className={styles.editar}
+                                    onClick={() => handleOpenModal(item)}>Editar
+                                </Button>
+                                <Button
+                                    variant='danger'
+                                    onClick={() => deleteColumn(item)}
+                                    className={styles.excluir}>Excluir
+                                </Button>
+                            </td>
+                        </tr>
+                    ))}
+
+                </tbody>
+            </Table>
+            {showMyComponent && (
+                <PopUp
+                    show={showMyComponent}
+                    handleClose={handleCloseModal}
+                    updateTable={updateTable}
+                    item={selectedItem}
+                />
+            )}
+
+        </>
+
     );
 };
 
