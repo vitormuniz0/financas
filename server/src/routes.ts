@@ -16,5 +16,5 @@ router.post("/auth",  authController.authenticate)         //autenticate / entra
 router.post("/criarGasto" , gastosController.CriarGasto)
 router.get("/buscarGasto/:id_user" , gastosController.BuscarGasto)
 router.put("/atualizarGasto/:id" , gastosController.AtualizarGasto)
-router.delete("deletarGasto/:id", gastosController.DeletarGasto)
+router.delete("/deletarGasto/:id", gastosController.DeletarGasto)
 

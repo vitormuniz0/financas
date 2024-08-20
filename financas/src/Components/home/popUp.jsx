@@ -56,10 +56,15 @@ export const PopUp = ({ show, handleClose, updateTable, item }) => {
             } else {
                 console.error("updateTable não é uma função");
             }
-            
+
             alert("Salvo Com Sucesso!")
             handleClose();
-            
+
+            setDescricao('');
+            setValor('');
+            setCategoria('');
+            setTipo('');
+
         } catch (error) {
             console.error("Erro ao tentar salvar Gasto!", error)
         }

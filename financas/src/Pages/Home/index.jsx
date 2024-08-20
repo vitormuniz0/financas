@@ -83,7 +83,7 @@ export const Home = () => {
                 </Row>
                 <Row>
                     <Col>
-                        <Tabela />
+                        <Tabela onUpdate={fetchData}/>
                     </Col>
                 </Row>
             </div>

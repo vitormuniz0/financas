@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/auth'
 import { PopUp } from './popUp';
 
 
-export const Tabela = () => {
+export const Tabela = (onUpdate) => {
 
     const [dados, setDados] = useState([])
     const { userId } = useContext(AuthContext);
@@ -43,6 +43,10 @@ export const Tabela = () => {
         try {
             const response = await api.get(`http://localhost:3334/buscarGasto/${userId}`);
             setDados(response.data);
+
+            if (typeof onUpdate === 'function') {
+                await onUpdate();
+            }
         } catch (error) {
             console.error('Erro ao buscar os dados:', error);
         }
@@ -51,7 +55,7 @@ export const Tabela = () => {
     const deleteColumn = async (item) => {
         try {
             await api.delete(`/deletarGasto/${item.id}`);
-            updateTable();
+            await updateTable();
         } catch (error) {
             console.error("Erro ao tentar deletar gasto!", error);
         }
@@ -65,6 +69,7 @@ export const Tabela = () => {
                         <th>Descrição</th>
                         <th>Valor</th>
                         <th>Categoria</th>
+                        <th>Tipo</th>
                         <th>Data/hora</th>
                         <th>Gerenciar</th>
                     </tr>
@@ -75,6 +80,7 @@ export const Tabela = () => {
                             <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.descricao}</td>
                             <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.valor}</td>
                             <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.categoria}</td>
+                            <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.tipo}</td>
                             <td className={item.tipo === "Entrada" ? styles.entrada : styles.saida}>{item.createdAt}</td>
                             <td>
                                 <Button
