@@ -11,6 +11,6 @@ exclude:
 # Adicione outras configurações do Jekyll aqui, se necessário
 title: Financas
 description: "Site de organização financeira"
-baseurl: "" # ou o subdiretório, se houver
+baseurl: "https://github.com/vitormuniz0/financas" # ou o subdiretório, se houver
 url: "" # substitua pela URL base do seu site
 theme: jekyll-theme-primer
