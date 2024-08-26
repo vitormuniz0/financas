@@ -1,74 +1,16 @@
 exclude:
   - node_modules
-  
-  
-- .gitignore
+  - .gitignore
   - .DS_Store
   - npm-debug.log
   
  
 - yarn-debug.log
-  
- 
-- yarn-error.log
+  - yarn-error.log
 
-name: Build and Deploy Jekyll site
-
-on:
-  push:
-    
-  
-branches:
-      
-   
-- main
-
-jobs:
-  
- 
-build:
-    
-   
-runs-on: ubuntu-latest
-
-    
-
-   
-
-
-steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Ruby
-        
- 
-uses: actions/setup-ruby@v2
-        
-     
-with:
-          
- 
-ruby-version: '3.1'
-
-      
-
-  
-- name: Install Bundler
-        
-        
-run: gem install bundler
-
-      
-
-- name: Install dependencies
-        
-     
-run: bundle install
-
-      
-
-- name: Build the site
-        
-  
-run: bundle exec jekyll build
+# Adicione outras configurações do Jekyll aqui, se necessário
+title: Financas
+description: "Site de organização financeira"
+baseurl: "" # ou o subdiretório, se houver
+url: "" # substitua pela URL base do seu site
+theme: jekyll-theme-primer
