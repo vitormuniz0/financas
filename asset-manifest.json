@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/financas/static/css/main.21cce2ed.css",
+    "main.js": "/financas/static/js/main.9b625a60.js",
+    "static/media/jp.svg": "/financas/static/media/jp.8118a8e9664ca53c9baee9865dabffb6.svg",
+    "index.html": "/financas/index.html",
+    "main.21cce2ed.css.map": "/financas/static/css/main.21cce2ed.css.map",
+    "main.9b625a60.js.map": "/financas/static/js/main.9b625a60.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21cce2ed.css",
+    "static/js/main.9b625a60.js"
+  ]
+}
