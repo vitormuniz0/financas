@@ -1,12 +1,20 @@
 exclude:
   
-  
+ 
 - node_modules
   - .gitignore
   - .DS_Store
-  - npm-debug.log
+  
+  
+- npm-debug.log
   - yarn-debug.log
-  - yarn-error.log
+  
+  
+- yarn-error.log
+  - /financas/node_modules
+  
+  
+- /server/node_modules
 
 # Adicione outras configurações do Jekyll aqui, se necessário
 title: Financas
