@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize"
 
 export const sequelize = new Sequelize('financas', 'root', '', {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'postgres'
 })
 
 const testConnection = async () => {
