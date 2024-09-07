@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node-dev --respawn  --transpile-only --files src/server.ts",
     "dev": "nodemon index.js",
-    "type": "module"
+    "type": "module",
+    "build": "tsup src",
+    "play": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +24,8 @@
     "mysql2": "^3.9.2",
     "nodemon": "^3.1.0",
     "prisma": "^5.11.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "tsup": "^8.2.4"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
