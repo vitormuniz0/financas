@@ -1,8 +1,10 @@
-import { DataTypes } from 'sequelize';
-import { sequelize } from '../connection';
-import Users from './userModel'; // Importe o modelo Users
+import { DataTypes, Model } from 'sequelize';
+import { sequelize } from './index'; // Certifique-se de que o caminho está correto
+import Users from './userModel';
 
-const Gastos = sequelize.define('Gastos', {
+class Gastos extends Model {}
+
+Gastos.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -12,8 +14,8 @@ const Gastos = sequelize.define('Gastos', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'usuarios', // Nome da tabela de referência
-            key: 'id'  // Nome da coluna
+            model: Users,
+            key: 'id'
         }
     },
     descricao: {
@@ -21,7 +23,7 @@ const Gastos = sequelize.define('Gastos', {
         allowNull: false
     },
     valor: {
-        type: DataTypes.DECIMAL(10, 2), // Tipo alterado para DECIMAL
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
     categoria: {
@@ -43,10 +45,9 @@ const Gastos = sequelize.define('Gastos', {
         defaultValue: DataTypes.NOW
     }
 }, {
-    tableName: "gastos"
+    sequelize,
+    modelName: 'Gastos',
+    tableName: 'gastos'
 });
-
-// Define o relacionamento
-Gastos.belongsTo(Users, { foreignKey: 'id_user', as: 'usuario' });
 
 export default Gastos;
