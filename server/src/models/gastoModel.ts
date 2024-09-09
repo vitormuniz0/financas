@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../connection';
+import Users from './userModel'; // Importe o modelo Users
 
 const Gastos = sequelize.define('Gastos', {
     id: {
@@ -11,7 +12,7 @@ const Gastos = sequelize.define('Gastos', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'usuarios', // Nome da tabela de referencia
+            model: 'usuarios', // Nome da tabela de referência
             key: 'id'  // Nome da coluna
         }
     },
@@ -20,7 +21,7 @@ const Gastos = sequelize.define('Gastos', {
         allowNull: false
     },
     valor: {
-        type: DataTypes.DOUBLE,
+        type: DataTypes.DECIMAL(10, 2), // Tipo alterado para DECIMAL
         allowNull: false
     },
     categoria: {
@@ -44,5 +45,8 @@ const Gastos = sequelize.define('Gastos', {
 }, {
     tableName: "gastos"
 });
+
+// Define o relacionamento
+Gastos.belongsTo(Users, { foreignKey: 'id_user', as: 'usuario' });
 
 export default Gastos;
