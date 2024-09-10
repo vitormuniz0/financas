@@ -26,7 +26,7 @@ export const Tabela = (onUpdate) => {
 
     const fetchData = useCallback(async () => {
         try {
-            const response = await api.get(`http://localhost:3334/buscarGasto/${userId}`);
+            const response = await api.get(`https://financas-server-5zow.onrender.com/buscarGasto/${userId}`);
             setDados(response.data);
         } catch (error) {
             console.error('Erro ao buscar os dados:', error);
@@ -41,7 +41,7 @@ export const Tabela = (onUpdate) => {
 
     const updateTable = async () => {
         try {
-            const response = await api.get(`http://localhost:3334/buscarGasto/${userId}`);
+            const response = await api.get(`https://financas-server-5zow.onrender.com/buscarGasto/${userId}`);
             setDados(response.data);
 
             if (typeof onUpdate === 'function') {

@@ -29,3 +29,7 @@ const startServer = async () => {
 }
 
 startServer();
+
+app.use(cors({
+    origin: 'https://vitormuniz0.github.io/financas' // Substitua pela URL do seu frontend
+}));

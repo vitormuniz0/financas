@@ -23,7 +23,7 @@ export const Home = () => {
     const fetchData = useCallback(async () => {
         if (userId) {
             try {
-                const response = await api.get(`http://localhost:3334/buscarGasto/${userId}`);
+                const response = await api.get(`https://financas-server-5zow.onrender.com/buscarGasto/${userId}`);
                 setDados(response.data);
             } catch (error) {
                 console.error('Erro ao buscar os dados:', error);
