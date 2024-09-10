@@ -7,7 +7,7 @@ import connection from "./connection";
 const express = require('express')
 
 const app = express()
-const PORT = 3334;
+const PORT = 10000;
 
 app.use(cors())
 app.use(express.json())
