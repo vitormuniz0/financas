@@ -1,53 +1,63 @@
-import { DataTypes, Model } from 'sequelize';
-import { sequelize } from './index'; // Certifique-se de que o caminho está correto
+import { DataTypes, Model, Sequelize } from 'sequelize';
 import Users from './userModel';
 
-class Gastos extends Model {}
+class Gastos extends Model {
+  public id!: number;
+  public id_user!: number;
+  public descricao!: string;
+  public valor!: number;
+  public categoria!: string;
+  public tipo!: string;
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 
-Gastos.init({
-    id: {
+  public static initialize(sequelize: Sequelize) {
+    Gastos.init({
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-    },
-    id_user: {
+      },
+      id_user: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Users,
-            key: 'id'
+          model: 'usuarios', // Nome da tabela de referência
+          key: 'id'  // Nome da coluna
         }
-    },
-    descricao: {
+      },
+      descricao: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    valor: {
+      },
+      valor: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
-    },
-    categoria: {
+      },
+      categoria: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    tipo: {
+      },
+      tipo: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    createdAt: {
+      },
+      createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
-    },
-    updatedAt: {
+      },
+      updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
-    }
-}, {
-    sequelize,
-    modelName: 'Gastos',
-    tableName: 'gastos'
-});
+      }
+    }, {
+      sequelize,
+      tableName: 'gastos',
+      timestamps: true
+    });
+  }
+}
 
 export default Gastos;

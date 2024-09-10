@@ -1,40 +1,48 @@
-import { DataTypes, Model } from 'sequelize';
-import { sequelize } from './index'; // Certifique-se de que o caminho está correto
+import { DataTypes, Model, Sequelize } from 'sequelize';
 
-class Users extends Model {}
+class Users extends Model {
+  public id!: number;
+  public name!: string;
+  public email!: string;
+  public password!: string;
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 
-Users.init({
-    id: {
+  public static initialize(sequelize: Sequelize) {
+    Users.init({
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-    },
-    name: {
+      },
+      name: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    email: {
+      },
+      email: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    password: {
+      },
+      password: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    createdAt: {
+      },
+      createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
-    },
-    updatedAt: {
+      },
+      updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
-    }
-}, {
-    sequelize,
-    modelName: 'usuarios',
-    tableName: 'usuarios'
-});
+      }
+    }, {
+      sequelize,
+      tableName: 'usuarios',
+      timestamps: true
+    });
+  }
+}
 
 export default Users;
